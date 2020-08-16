@@ -52,7 +52,7 @@ def unfollowNon():
         for follower in arrFriends:
             if follower not in arrFollowers:
                 api.destroy_friendship(follower)
-                time.sleep(3)
+                time.sleep(5)
                 contador += 1
                 bar1.next()
                 if contador >= 50:

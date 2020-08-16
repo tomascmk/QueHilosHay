@@ -1,5 +1,5 @@
 import time
-
+from datetime import date
 import credentials
 import tweepy
 
@@ -18,7 +18,7 @@ def confirmar(full_textPlus, full_text):
             auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
             auth.set_access_token(access_token, access_token_secret)
             api = tweepy.API(auth)
-            print('\nSending confirmation question...')
+            print('\nSending confirmation question... ', time.strftime("%X"))
             respRapida = 'options'
             try:
                 api.send_direct_message(recipient_id=tomiID, text=full_textPlus, quick_reply_type=respRapida)
@@ -30,7 +30,7 @@ def confirmar(full_textPlus, full_text):
             time.sleep(1200)
             break
         except:
-            print('\nSending confirmation question FAILED...')
+            print('\nSending confirmation question FAILED... ',time.strftime("%X"))
             time.sleep(300)
             intentos += 1
             if intentos >= 3:
