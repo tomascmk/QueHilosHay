@@ -20,9 +20,48 @@ def checkNation(nation, type):
     return isFrom
 
 
-countriesL = ['PARAGUAY', 'MEXICO', 'MEJICO', 'BOLIVIA', 'VENEZUELA', 'ESPAÑA', 'ESPANA', 'ESPANIA', 'ECUADOR', 'CHILE',
-              'COLOMBIA']
-countriesM = ['Paraguay', 'México', 'Mexico', 'Méjico', 'Mejico', 'Bolivia', 'Venezuela', 'España', 'Espana', 'Espania',
-              'Ecuador', 'Chile', 'Colombia']
-countriesS = ['paraguay', 'méxico', 'mexico', 'méjico', 'mejico', 'bolivia', 'venezuela', 'españa', 'espana', 'espania',
-              'ecuador', 'chile', 'colombia']
+countriesL = [
+    'PARAGUAY', 
+    'MEXICO', 
+    'MEJICO', 
+    'BOLIVIA', 
+    'VENEZUELA', 
+    'ESPAÑA', 
+    'ESPANA', 
+    'ESPANIA', 
+    'ECUADOR', 
+    'CHILE',
+    'COLOMBIA'
+    ]
+
+countriesM = [
+    'Paraguay', 
+    'México', 
+    'Mexico', 
+    'Méjico', 
+    'Mejico', 
+    'Bolivia', 
+    'Venezuela', 
+    'España', 
+    'Espana', 
+    'Espania',
+    'Ecuador', 
+    'Chile', 
+    'Colombia'
+    ]
+    
+countriesS = [
+    'paraguay', 
+    'méxico', 
+    'mexico', 
+    'méjico', 
+    'mejico', 
+    'bolivia', 
+    'venezuela', 
+    'españa', 
+    'espana', 
+    'espania',    
+    'ecuador', 
+    'chile', 
+    'colombia'
+    ]
