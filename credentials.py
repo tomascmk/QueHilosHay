@@ -40,7 +40,7 @@ def setCredentials():
             print('Cred to update: ' + '*' * 21 + creds1[-4:])
             arrCred = credential1.split('\n')
             arrCred = arrCred[1:-1]
-            print(arrCred)
+            #print(arrCred)
             tCont = 0
             print('Please enter the new value, if you want to keep the same value please insert "0"')
             for arr in arrCred:

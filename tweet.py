@@ -15,21 +15,21 @@ def tweet():
 
     print("Boti esta iniciando")
     queries = ["Abro Hilo", "Abro hilo", "abro hilo"]
-    mensajes = [
-        'Hola! Los invitamos a pasarse por nuestro perfil para estar al tanto de todos los hilos que son tendencia y ayudarnos con un follow! #QueHilosHay #AbroHilo #HilosDeTwitter']
+    mensajes = ['Siguenos y mantente al tanto de todo lo que esta pasando #QueHilosHay #AbroHilo #HilosDeTwitter']
+        #'Hola! Los invitamos a pasarse por nuestro perfil para estar al tanto de todos los hilos que son tendencia y ayudarnos con un follow! #QueHilosHay #AbroHilo #HilosDeTwitter']
 
-    msj = ['Nuevo hilo! #QueHilosHay #AbroHilo #HilosDeTwitter',
-           'Habemus hilo nuevo! #QueHilosHay #AbroHilo #HilosDeTwitter',
-           'Ya viste este hilo? #QueHilosHay #AbroHilo #HilosDeTwitter',
-           'Te traemos un nuevo hilo #QueHilosHay #AbroHilo #HilosDeTwitter',
-           'Otro hilo más! #QueHilosHay #AbroHilo #HilosDeTwitter',
-           'Dejo este hilo por aca... #QueHilosHay #AbroHilo #HilosDeTwitter']
+    msj = ['Nuevo hilo #QueHilosHay #AbroHilo #HilosDeTwitter',
+        'Ya viste este hilo? #QueHilosHay #AbroHilo #HilosDeTwitter',
+        'Te traemos un nuevo hilo #QueHilosHay #AbroHilo #HilosDeTwitter',
+        'Otro hilo más! #QueHilosHay #AbroHilo #HilosDeTwitter',
+        'Dejo este hilo por aca... #QueHilosHay #AbroHilo #HilosDeTwitter',
+        'Habemus hilo nuevo! #QueHilosHay #AbroHilo #HilosDeTwitter']
 
     tweets_per_query = 300
     loop = True
     ownTweet = 0
     notRetweeted = 0
-    minimo = [50000, 6000, 10000]
+    minimo = [100000]
     crasheos = 0
     num = 0
     fechaTweet = False
@@ -83,7 +83,7 @@ def tweet():
                                 tweetMonth = tweet.created_at.month
                             if todayMonth == tweetMonth or todayMonth == tweetMonth - 1:
                                 fechaTweet = True
-                            if 'RT' in tweet.full_text and retweets >= 1500 and fechaTweet:
+                            if 'RT' in tweet.full_text and retweets >= 400 and fechaTweet:
                                 nacionalidad = tweet.user._json['location']
                                 nacChecked = controller.checkNation(nacionalidad, 'Nation')
                             try:
@@ -99,7 +99,7 @@ def tweet():
                                 print('Location: Undefined')
                             retwittear = True
                             # textChecked = controller.checkNation(tweet.full_text, 'Text')
-                            if tweet.id_str in txt or rtStatus in txt or retweets < 1500 or nacChecked:
+                            if tweet.id_str in txt or rtStatus in txt or retweets < 400 or nacChecked:
                                 retwittear = False
                             else:
                                 try:

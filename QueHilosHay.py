@@ -6,6 +6,7 @@ import tweepy
 clear = lambda: os.system('cls')  # on Windows System
 account = 'HayHilos'
 loop = True
+
 while loop:
     clear()
     print('#' * 37)
@@ -17,7 +18,8 @@ while loop:
     print("Enter '4' to see your non-followers.")
     print("Enter '5' to verify your credentials.")
     print("Enter '6' to view the current status of your account.")
-    print("Enter '7' to end this program.", '\n')
+    print("Enter '7' to compare followers to anyone.")
+    print("Enter '8' to end this program.", '\n')
     action = input("Action: ")
     print('')
 
@@ -43,7 +45,7 @@ while loop:
             unfollow.unfollowNon()
 
     elif action == '4':
-        compare.compareFollows()
+        compare.compareOwnFollows()
 
     elif action == '5':
         print("\nEnter '1' to verify your credential's status.")
@@ -58,6 +60,10 @@ while loop:
         currentStatus.status(account)
 
     elif action == '7':
+        user = input("\nPlease enter the screen name of the user you want to compare: ")
+        compare.compareFollowers(user)
+
+    elif action == '8':
         print('\n', 'Finishing program....')
         time.sleep(2)
         loop = False
