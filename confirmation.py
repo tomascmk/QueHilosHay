@@ -5,6 +5,7 @@ import tweepy
 
 
 def confirmar(full_textPlus, full_text):
+    '''
     condicion = 'No'
     intentos = 0
     tomiID = '286367061'
@@ -41,11 +42,13 @@ def confirmar(full_textPlus, full_text):
                 if resp == "si":
                     condicion = 'Si'
                 elif resp == "no":
-                    condicion = "No"
+                    condicion = "No"'''
+    condicion = 'Si'
     return condicion
 
 
 def esperarConfirmacion():
+    '''
     global respuesta
     confirmacionRecibida = True
     creds = credentials.credentials(1)
@@ -76,3 +79,5 @@ def esperarConfirmacion():
         else:
             time.sleep(1200)
     return respuesta
+    '''
+    return "Si"

@@ -65,106 +65,119 @@ def tweet():
                             text = tweet.retweeted_status.full_text.lower()
                         except:
                             text = tweet.full_text.lower()
-                        if "Abro Hilo" in text or "Abro hilo" in text or "abro hilo" in text:
-                            txtt = open("docs/idsRT.txt")
-                            txt = txtt.read()
-                            try:
-                                rtStatus = tweet.retweeted_status.id_str
-                            except:
-                                rtStatus = tweet.id_str
-                            txtt.close()
-                            print(url)
-                            # print('retweets: '+retweets)
-                            nacionalidad = ''
-                            todayMonth = date.today().month
-                            try:
-                                tweetMonth = tweet.retweeted_status.created_at.month
-                            except:
-                                tweetMonth = tweet.created_at.month
-                            if todayMonth == tweetMonth or todayMonth == tweetMonth - 1:
-                                fechaTweet = True
-                            if 'RT' in tweet.full_text and retweets >= 400 and fechaTweet:
-                                nacionalidad = tweet.user._json['location']
-                                nacChecked = controller.checkNation(nacionalidad, 'Nation')
-                            try:
-                                print("Retweets: " + retweets)
-                            except:
-                                print(retweets)
-                            try:
-                                if nacionalidad != '':
-                                    print('Location: ' + nacionalidad)
-                                else:
-                                    print('Location: Undefined')
-                            except:
-                                print('Location: Undefined')
-                            retwittear = True
-                            # textChecked = controller.checkNation(tweet.full_text, 'Text')
-                            if tweet.id_str in txt or rtStatus in txt or retweets < 400 or nacChecked:
-                                retwittear = False
-                            else:
+                        if "BTS" in text or "bts" in text:
+                            if "Abro Hilo" in text or "Abro hilo" in text or "abro hilo" in text:
+                                txtt = open("docs/idsRT.txt")
+                                txt = txtt.read()
                                 try:
-                                    try:
-                                        textChecked = controller.checkNation(tweet.full_text, 'Text')
-                                        if textChecked:
-                                            retwittear = False
-                                    except:
-                                        nacionalidadUser = tweet.retweeted_status.user._json['location']
-                                        textChecked = controller.checkNation(nacionalidadUser, 'Text')
-                                        if textChecked:
-                                            retwittear = False
+                                    rtStatus = tweet.retweeted_status.id_str
                                 except:
-                                    pass
-                            if retwittear:
-                                if 'RT' in tweet.full_text:
-                                    textRtFv = tweet.retweeted_status.full_text + '\nRts: ', str(tweet.retweeted_status.retweet_count) + '\nFavs: ', str(tweet.retweeted_status.favorite_count)
-                                    resp = confirmation.confirmar(textRtFv, tweet.retweeted_status.full_text)
+                                    rtStatus = tweet.id_str
+                                txtt.close()
+                                print(url)
+                                # print('retweets: '+retweets)
+                                nacionalidad = ''
+                                todayMonth = date.today().month
+                                try:
+                                    tweetMonth = tweet.retweeted_status.created_at.month
+                                except:
+                                    tweetMonth = tweet.created_at.month
+                                if todayMonth == tweetMonth or todayMonth == tweetMonth - 1:
+                                    fechaTweet = True
+                                if 'RT' in tweet.full_text and retweets >= 400 and fechaTweet:
+                                    nacionalidad = tweet.user._json['location']
+                                    nacChecked = controller.checkNation(nacionalidad, 'Nation')
+                                try:
+                                    print("Retweets: " + retweets)
+                                except:
+                                    print(retweets)
+                                try:
+                                    if nacionalidad != '':
+                                        print('Location: ' + nacionalidad)
+                                    else:
+                                        print('Location: Undefined')
+                                except:
+                                    print('Location: Undefined')
+                                retwittear = True
+                                # textChecked = controller.checkNation(tweet.full_text, 'Text')
+                                if tweet.id_str in txt or rtStatus in txt or retweets < 400 or nacChecked:
+                                    retwittear = False
                                 else:
-                                    textRtFv = tweet.full_text + '\nRts: ' + str(tweet.retweet_count) + '\nFavs: ' + str(tweet.favorite_count)
-                                    resp = confirmation.confirmar(textRtFv, tweet.full_text)
-                                if resp == 'Si':
-                                    confirmado = confirmation.esperarConfirmacion()
-                                if confirmado == 'Si':
-                                    txt = open("docs/idsRT.txt", "a")
                                     try:
-                                        miUrl = url
-                                        if num > 5:
-                                            num = 0
-                                        twit = msj[num]
-                                        num += 1
-                                        api.update_status(status=twit, in_reply_to_status_id=tweet.id_str,
-                                                          attachment_url=miUrl)
-                                        print("\n\t √ Retweeted")
-                                        print("")
-                                        new_tweets += 1
-                                        ownTweet += 1
                                         try:
-                                            if "RT" in tweet.full_text:
-                                                idSaved = tweet.retweeted_status.id_str
-                                                txt.write(idSaved + "\n")
-                                                txt.close()
-                                            else:
-                                                idSaved = tweet.id_str
-                                                txt.write(idSaved + "\n")
-                                                txt.close()
+                                            textChecked = controller.checkNation(tweet.full_text, 'Text')
+                                            if textChecked:
+                                                retwittear = False
                                         except:
-                                            pass
+                                            nacionalidadUser = tweet.retweeted_status.user._json['location']
+                                            textChecked = controller.checkNation(nacionalidadUser, 'Text')
+                                            if textChecked:
+                                                retwittear = False
+                                    except:
+                                        pass
+                                if retwittear:
+                                    if 'RT' in tweet.full_text:
+                                        textRtFv = tweet.retweeted_status.full_text + '\nRts: ', str(tweet.retweeted_status.retweet_count) + '\nFavs: ', str(tweet.retweeted_status.favorite_count)
+                                        resp = confirmation.confirmar(textRtFv, tweet.retweeted_status.full_text)
+                                    else:
+                                        textRtFv = tweet.full_text + '\nRts: ' + str(tweet.retweet_count) + '\nFavs: ' + str(tweet.favorite_count)
+                                        resp = confirmation.confirmar(textRtFv, tweet.full_text)
+                                    if resp == 'Si':
+                                        confirmado = confirmation.esperarConfirmacion()
+                                    if confirmado == 'Si':
+                                        txt = open("docs/idsRT.txt", "a")
                                         try:
-                                            pass
-                                            replyTo = tweet.retweeted_status.user.screen_name
-                                            reply = "@" + replyTo + " Hola, los invitamos a pasar por nuestro perfil para estar al tanto de todos los hilos que son tendencia y ayudarnos con un follow! #QueHilosHay #AbroHilo #HilosDeTwitter"
-                                            api.update_status(reply, tweet.retweeted_status.id_str)
-                                        except:
-                                            pass
-                                        time.sleep(1400)
-                                    except tweepy.TweepError as e:
-                                        # miUrl = url
-                                        # api.update_status('Síguenos para enterarte de los mejores hilos de twitter!! #QueHilosHay #AbroHilo', str(id), attach_url=miUrl)
+                                            miUrl = url
+                                            if num > 5:
+                                                num = 0
+                                            twit = msj[num]
+                                            num += 1
+                                            api.update_status(status=twit, in_reply_to_status_id=tweet.id_str,
+                                                            attachment_url=miUrl)
+                                            print("\n\t √ Retweeted")
+                                            print("")
+                                            new_tweets += 1
+                                            ownTweet += 1
+                                            try:
+                                                if "RT" in tweet.full_text:
+                                                    idSaved = tweet.retweeted_status.id_str
+                                                    txt.write(idSaved + "\n")
+                                                    txt.close()
+                                                else:
+                                                    idSaved = tweet.id_str
+                                                    txt.write(idSaved + "\n")
+                                                    txt.close()
+                                            except:
+                                                pass
+                                            try:
+                                                pass
+                                                replyTo = tweet.retweeted_status.user.screen_name
+                                                reply = "@" + replyTo + " Hola, los invitamos a pasar por nuestro perfil para estar al tanto de todos los hilos que son tendencia y ayudarnos con un follow! #QueHilosHay #AbroHilo #HilosDeTwitter"
+                                                api.update_status(reply, tweet.retweeted_status.id_str)
+                                            except:
+                                                pass
+                                            time.sleep(1400)
+                                        except tweepy.TweepError as e:
+                                            # miUrl = url
+                                            # api.update_status('Síguenos para enterarte de los mejores hilos de twitter!! #QueHilosHay #AbroHilo', str(id), attach_url=miUrl)
 
-                                        print('\n\t ! Not Retweeted')
-                                        print("")
-                                        notRetweeted += 1
-                                        txt.close()
-                                elif confirmado == 'No':
+                                            print('\n\t ! Not Retweeted')
+                                            print("")
+                                            notRetweeted += 1
+                                            txt.close()
+                                    elif confirmado == 'No':
+                                        txt = open("docs/idsRT.txt", "a")
+                                        if "RT" in tweet.full_text:
+                                            idSaved = tweet.retweeted_status.id_str
+                                            txt.write(idSaved + "\n")
+                                            txt.close()
+                                        else:
+                                            idSaved = tweet.id_str
+                                            txt.write(idSaved + "\n")
+                                            txt.close()
+                                else:
+                                    print('\n\t ! Not Retweeted')
+                                    print("")
                                     txt = open("docs/idsRT.txt", "a")
                                     if "RT" in tweet.full_text:
                                         idSaved = tweet.retweeted_status.id_str
@@ -174,18 +187,6 @@ def tweet():
                                         idSaved = tweet.id_str
                                         txt.write(idSaved + "\n")
                                         txt.close()
-                            else:
-                                print('\n\t ! Not Retweeted')
-                                print("")
-                                txt = open("docs/idsRT.txt", "a")
-                                if "RT" in tweet.full_text:
-                                    idSaved = tweet.retweeted_status.id_str
-                                    txt.write(idSaved + "\n")
-                                    txt.close()
-                                else:
-                                    idSaved = tweet.id_str
-                                    txt.write(idSaved + "\n")
-                                    txt.close()
             print("New Tweets: " + str(new_tweets))
         except:
             crasheos += 1

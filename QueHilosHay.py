@@ -10,7 +10,7 @@ loop = True
 while loop:
     clear()
     print('#' * 37)
-    print('# WELCOME TO "BOTI" THE TWITTER APP #')
+    print('# WELCOME TO "BTS BOTI" THE TWITTER APP #')
     print('#'*37)
     print("\nEnter '1' to retweet threats.")
     print("Enter '2' to follow functions.") #someone's followers.")
