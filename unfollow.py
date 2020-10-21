@@ -15,7 +15,7 @@ def unfollow():
 
     seguidores = []
 
-    seguidores = api.followers_ids('HayHilos')
+    seguidores = api.friends_ids('HayHilos')
     bar1 = IncrementalBar('Processing:', max=len(seguidores))
     for follower in seguidores:
         try:
